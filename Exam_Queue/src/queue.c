@@ -1,4 +1,5 @@
 #include "queue.h"
+#include "item.h"
 #include <stdlib.h>
 
 typedef struct node {

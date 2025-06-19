@@ -1,4 +1,6 @@
+#include "item.h"
 #include "ex.h"
+#include "queue.h"
 #include <stdlib.h>
 
 int saltaCoda(queue q, item i) {
