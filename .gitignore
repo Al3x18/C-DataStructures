@@ -1,0 +1,29 @@
+# Build directories
+build/
+obj/
+
+# Output files
+*.out
+
+# Additional build artifacts
+*.o
+*.exe
+*.a
+*.so
+*.dylib
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
