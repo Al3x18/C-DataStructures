@@ -22,7 +22,7 @@ int main (void) {
 
     printQueue(q);
     
-    saltaCoda(q, i2);
+    skipQueue(q, i2);
     printf("\n");
     printQueue(q);
 

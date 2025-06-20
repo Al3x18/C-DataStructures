@@ -1,6 +1,7 @@
 #include "queue.h"
 #include "item.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct node {
     item data;
@@ -73,10 +74,14 @@ item dequeue(queue q) {
 }
 
 void printQueue(queue q) {
-    node *temp = q->head;
-
-    while (temp != NULL) {
-        output_item(temp->data);
-        temp = temp->next;
+    node* current = q->head;
+    
+    printf("HEAD-> ");
+    
+    while(current != NULL) {
+        output_item(current->data);
+        current = current->next;
     }
+    printf("<-TAIL");
+    printf("\n");
 }

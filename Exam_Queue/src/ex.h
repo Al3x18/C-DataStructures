@@ -1,3 +1,3 @@
 #include "queue.h"
 
-int saltaCoda(queue q, item i);
+int skipQueue(queue q, item i);
