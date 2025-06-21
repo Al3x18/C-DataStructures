@@ -33,7 +33,7 @@ int main(void) {
     outputBtree(albero);
     printf("\n\n");
     
-    printf("2. Output visuale (struttura dell'albero):\n");
+    printf("2. Output visuale (struttura dell'albero, radice a sinistra):\n");
     outputBtreeVisual(albero);
     printf("\n");
     
