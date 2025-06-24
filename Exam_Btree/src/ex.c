@@ -46,14 +46,14 @@ int numLeaves(Btree t) {
     return numLeaves(figlioSX(t)) + numLeaves(figlioDX(t));
 }
 
-int numNodesWithSingleChild(Btree t) {
-    if (emptyBtree(t)) return 0;
+// int numNodesWithSingleChild(Btree t) {
+//     if (emptyBtree(t)) return 0;
 
-    if (emptyBtree(figlioSX(t)) && !emptyBtree(figlioDX(t))) return 1 + numNodesWithSingleChild(figlioDX(t));
-    if (!emptyBtree(figlioSX(t)) && emptyBtree(figlioDX(t))) return 1 + numNodesWithSingleChild(figlioSX(t));
+//     if (emptyBtree(figlioSX(t)) && !emptyBtree(figlioDX(t))) return 1 + numNodesWithSingleChild(figlioDX(t));
+//     if (!emptyBtree(figlioSX(t)) && emptyBtree(figlioDX(t))) return 1 + numNodesWithSingleChild(figlioSX(t));
 
-    return numNodesWithSingleChild(figlioSX(t)) + numNodesWithSingleChild(figlioDX(t));
-}
+//     return numNodesWithSingleChild(figlioSX(t)) + numNodesWithSingleChild(figlioDX(t));
+// }
 
 int numNodesWithSingleChildV2(Btree t) {
     if (emptyBtree(t)) return 0;
@@ -64,4 +64,14 @@ int numNodesWithSingleChildV2(Btree t) {
     if (figlioSX(t) != NULL && figlioDX(t) == NULL) count++;
 
     return count + numNodesWithSingleChildV2(figlioSX(t)) + numNodesWithSingleChildV2(figlioDX(t));
+}
+
+int numDXChilds(Btree t) {
+    if (emptyBtree(t)) return 0;
+
+    int count = 0;
+
+    if(figlioDX(t) != NULL) count++;
+
+    return count + numDXChilds(figlioSX(t)) + numDXChilds(figlioDX(t));
 }

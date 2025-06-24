@@ -13,15 +13,17 @@ int main(void) {
     //         6
     
     // Creo i nodi foglia
-    Btree foglia1 = consBtree(1, newBtree(), newBtree());
+    
     Btree foglia6 = consBtree(6, newBtree(), newBtree());
     Btree foglia9 = consBtree(9, newBtree(), newBtree());
+    Btree foglia10 = consBtree(10, newBtree(), newBtree());
     
     // Nodo 4 ha come figlio destro il nodo 6
     Btree nodo4 = consBtree(4, newBtree(), foglia6);
     
     // Creo i nodi intermedi
-    Btree nodo3 = consBtree(3, foglia1, nodo4);
+    Btree nodo1 = consBtree(1, foglia10, newBtree());
+    Btree nodo3 = consBtree(3, nodo1, nodo4);
     Btree nodo7 = consBtree(7, newBtree(), foglia9);
     
     // Creo la radice
@@ -45,6 +47,7 @@ int main(void) {
     printf("Il numero di nodi dell'albero è: %d\n", numNodes(albero));
     printf("Il numero di foglie dell'albero è: %d\n", numLeaves(albero));
     printf("Il numero di nodi con un solo figlio (function V2) è: %d\n", numNodesWithSingleChildV2(albero));
+    printf("Il numero di figli destri è: %d", numDXChilds(albero));
     
     printf("\n=== FINE ESEMPIO ===\n");
     
