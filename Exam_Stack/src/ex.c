@@ -1,4 +1,5 @@
 #include "ex.h"
+#include <stdlib.h>
 
 int duplicati(stack s1, stack s2) {
     if (emptyStack(s1) || emptyStack(s2)) return 0;
@@ -46,7 +47,10 @@ int duplicati(stack s1, stack s2) {
             push(currentS2, s2);
             pop(tmpS2);
         }
-    } 
+    }
+
+    free(tmpS1);
+    free(tmpS2);
 
     return count;
 }
