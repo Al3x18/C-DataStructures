@@ -75,3 +75,9 @@ int numDXChilds(Btree t) {
 
     return count + numDXChilds(figlioSX(t)) + numDXChilds(figlioDX(t));
 }
+
+int sumNodes(Btree t) {
+    if (emptyBtree(t)) return 0;
+
+    return getItem(t) + sumNodes(figlioSX(t)) + sumNodes(figlioDX(t));
+}

@@ -47,7 +47,8 @@ int main(void) {
     printf("Il numero di nodi dell'albero è: %d\n", numNodes(albero));
     printf("Il numero di foglie dell'albero è: %d\n", numLeaves(albero));
     printf("Il numero di nodi con un solo figlio (function V2) è: %d\n", numNodesWithSingleChildV2(albero));
-    printf("Il numero di figli destri è: %d", numDXChilds(albero));
+    printf("Il numero di figli destri è: %d\n", numDXChilds(albero));
+    printf("La somma dei nodi dell'albero è: %d\n", sumNodes(albero));
     
     printf("\n=== FINE ESEMPIO ===\n");
     

@@ -14,3 +14,5 @@ int numLeaves(Btree t);
 int numNodesWithSingleChildV2(Btree t);
 
 int numDXChilds(Btree t);
+
+int sumNodes(Btree t);
