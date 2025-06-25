@@ -16,3 +16,5 @@ int numNodesWithSingleChildV2(Btree t);
 int numDXChilds(Btree t);
 
 int sumNodes(Btree t);
+
+int fratelli(Btree t);

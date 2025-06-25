@@ -81,3 +81,15 @@ int sumNodes(Btree t) {
 
     return getItem(t) + sumNodes(figlioSX(t)) + sumNodes(figlioDX(t));
 }
+
+int fratelli(Btree t) {
+    if (emptyBtree(t)) return 0;
+
+    int count = 0;
+
+    if (figlioSX(t) != NULL && figlioDX(t) != NULL) {
+        count += 2;
+    }
+
+    return count + fratelli(figlioSX(t)) + fratelli(figlioDX(t));
+}
