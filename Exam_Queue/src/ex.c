@@ -1,5 +1,7 @@
 #include "ex.h"
 #include <stdlib.h>
+#include "queue.h"
+#include <stdio.h>
 
 int skipQueue(queue q, item i) {
     queue temp = newQueue(); //Nuova coda temporanea
@@ -50,4 +52,49 @@ int skipQueue(queue q, item i) {
     
     //Se la tutto è andato correttamente la funzione ritorna 1 altrimenti 0
     return foundFlag ? 1 : 0;
+}
+
+int speculare(queue q1, queue q2) {
+    if (emptyQueue(q1) || emptyQueue(q2)) {
+        return 0;
+    }
+
+    item arr1[50];
+    item arr2[50];
+
+    //Salva coda 1 in arr1
+    int i = 0;
+    while (!emptyQueue(q1)) {
+        arr1[i] = dequeue(q1);
+        i++;
+    }
+
+    //Salva coda 2 in arr2
+    int j = 0;
+    while (!emptyQueue(q2)) {
+        arr2[j] = dequeue(q2);
+        j++;
+    }
+
+    //Rimette coda 1 in coda 1
+    for (int c1 = 0; c1 < i; c1++) {
+        enqueue(q1, arr1[c1]);
+    }
+
+    //Rimette coda 2 in coda 2
+    for (int c2 = 0; c2 < j; c2++) {
+        enqueue(q2, arr2[c2]);
+    }
+
+    //Se le due code non hanno lo stesso numero di elementi non sono speculari
+    if (i != j) return 0;
+
+    //Controlla se le due code sono speculari tramite l'array
+    for (int k = 0; k < i; k++) {
+        if (!eq(arr1[k], arr2[i - 1 - k])) {
+            return 0;
+        }
+    }
+
+    return 1;
 }
