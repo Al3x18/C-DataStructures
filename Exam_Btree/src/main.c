@@ -9,8 +9,8 @@ int main(void) {
     //     3   7
     //    / \   \
     //   1   4   9
-    //        \
-    //         6
+    //  /     \
+    // 10      6
     
     // Creo i nodi foglia
     
@@ -28,8 +28,28 @@ int main(void) {
     
     // Creo la radice
     Btree albero = consBtree(5, nodo3, nodo7);
+
     
-    printf("=== ALBERO BINARIO DI ESEMPIO ===\n\n");
+    // === SECONDO ALBERO DI ESEMPIO ===
+    //       8
+    //      / \
+    //     2   12
+    //    / \    \
+    //   0   5    15
+    //  /     \
+    // 20      7
+
+    Btree foglia7 = consBtree(7, newBtree(), newBtree());
+    Btree foglia15 = consBtree(15, newBtree(), newBtree());
+    Btree foglia20 = consBtree(20, newBtree(), newBtree());
+
+    Btree nodo5 = consBtree(5, newBtree(), foglia7);
+    Btree nodo0 = consBtree(0, foglia20, newBtree());
+    Btree nodo2 = consBtree(2, nodo0, nodo5);
+    Btree nodo12 = consBtree(12, newBtree(), foglia15);
+    Btree albero2 = consBtree(8, nodo2, nodo12);
+    
+    printf("=== ALBERO BINARIO DI ESEMPIO 1 ===\n\n");
     
     printf("1. Output in pre-order:\n");
     outputBtree(albero);
@@ -50,6 +70,8 @@ int main(void) {
     printf("Il numero di figli destri è: %d\n", numDXChilds(albero));
     printf("La somma dei nodi dell'albero è: %d\n", sumNodes(albero));
     printf("Il numero di fratelli è: %d\n", fratelli(albero));
+    printf("Il numero di foglie a distanza k è: %d\n", foglieK(albero, 3));
+    printf("Gli alberi sono strutturalmente uguali? %d\n", strutturalmenteUguali(albero, albero2));
     
     return 0;
 }

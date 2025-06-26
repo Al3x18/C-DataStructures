@@ -93,3 +93,36 @@ int fratelli(Btree t) {
 
     return count + fratelli(figlioSX(t)) + fratelli(figlioDX(t));
 }
+
+int foglieK(Btree t, int k) {
+    // Caso base: se il nodo è NULL, ritorna 0
+    if (emptyBtree(t)) return 0;
+
+    // Quando k arriva a 0, siamo arrivati all'altezza desiderata
+    // Qui controlliamo se il nodo corrente è una foglia
+    if (k == 0) {
+        // Se entrambi i figli sono NULL, questo è una foglia all'altezza desiderata
+        if (emptyBtree(figlioSX(t)) && emptyBtree(figlioDX(t))) return 1;
+        // Se il nodo ha figli, non è una foglia, quindi ritorna 0
+        return 0;
+    }
+
+    // Se k > 0, dobbiamo scendere ancora nell'albero
+    // k rappresenta quanti livelli dobbiamo ancora scendere
+    // Ad esempio: Se k=3, dobbiamo scendere 3 livelli dal nodo corrente
+    // Se k=2, dobbiamo scendere 2 livelli dal nodo corrente
+    // Se k=1, dobbiamo scendere 1 livello dal nodo corrente
+    // Se k=0, abbiamo raggiunto l'altezza desiderata
+    return foglieK(figlioSX(t), k - 1) + foglieK(figlioDX(t), k - 1);
+}
+
+int strutturalmenteUguali(Btree t1, Btree t2) {
+    // Se entrambi sono vuoti, sono uguali
+    if (emptyBtree(t1) && emptyBtree(t2)) return 1;
+
+    // Se uno è vuoto e l'altro no, non sono uguali
+    if (emptyBtree(t1) || emptyBtree(t2)) return 0;
+
+    return strutturalmenteUguali(figlioSX(t1), figlioSX(t2)) && 
+    strutturalmenteUguali(figlioDX(t1), figlioDX(t2));
+}

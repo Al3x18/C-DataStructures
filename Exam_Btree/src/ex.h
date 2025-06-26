@@ -18,3 +18,7 @@ int numDXChilds(Btree t);
 int sumNodes(Btree t);
 
 int fratelli(Btree t);
+
+int foglieK(Btree t, int k);
+
+int strutturalmenteUguali(Btree t1, Btree t2);
