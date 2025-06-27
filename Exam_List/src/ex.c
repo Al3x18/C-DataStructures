@@ -1,4 +1,5 @@
 #include "ex.h"
+#include <stdlib.h>
 
 item max_duplicazioni(list l) {
     if (emptyList(l)) {
