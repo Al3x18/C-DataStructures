@@ -46,16 +46,7 @@ int numLeaves(Btree t) {
     return numLeaves(figlioSX(t)) + numLeaves(figlioDX(t));
 }
 
-// int numNodesWithSingleChild(Btree t) {
-//     if (emptyBtree(t)) return 0;
-
-//     if (emptyBtree(figlioSX(t)) && !emptyBtree(figlioDX(t))) return 1 + numNodesWithSingleChild(figlioDX(t));
-//     if (!emptyBtree(figlioSX(t)) && emptyBtree(figlioDX(t))) return 1 + numNodesWithSingleChild(figlioSX(t));
-
-//     return numNodesWithSingleChild(figlioSX(t)) + numNodesWithSingleChild(figlioDX(t));
-// }
-
-int numNodesWithSingleChildV2(Btree t) {
+int numNodesWithSingleChild(Btree t) {
     if (emptyBtree(t)) return 0;
 
     int count = 0;
@@ -63,7 +54,7 @@ int numNodesWithSingleChildV2(Btree t) {
     if (figlioDX(t) != NULL && figlioSX(t) == NULL) count++;
     if (figlioSX(t) != NULL && figlioDX(t) == NULL) count++;
 
-    return count + numNodesWithSingleChildV2(figlioSX(t)) + numNodesWithSingleChildV2(figlioDX(t));
+    return count + numNodesWithSingleChild(figlioSX(t)) + numNodesWithSingleChild(figlioDX(t));
 }
 
 int numDXChilds(Btree t) {
@@ -74,12 +65,6 @@ int numDXChilds(Btree t) {
     if(figlioDX(t) != NULL) count++;
 
     return count + numDXChilds(figlioSX(t)) + numDXChilds(figlioDX(t));
-}
-
-int sumNodes(Btree t) {
-    if (emptyBtree(t)) return 0;
-
-    return getItem(t) + sumNodes(figlioSX(t)) + sumNodes(figlioDX(t));
 }
 
 int fratelli(Btree t) {
@@ -125,4 +110,26 @@ int strutturalmenteUguali(Btree t1, Btree t2) {
 
     return strutturalmenteUguali(figlioSX(t1), figlioSX(t2)) && 
     strutturalmenteUguali(figlioDX(t1), figlioDX(t2));
+}
+
+int sumNodes(Btree t) {
+    if (emptyBtree(t)) return 0;
+
+    return getItem(t) + sumNodes(figlioSX(t)) + sumNodes(figlioDX(t));
+}
+
+int ugualeSommaDxSx(Btree t) {
+    if (emptyBtree(t)) return 1;
+
+    Btree sx = figlioSX(t);
+    Btree dx = figlioDX(t);
+
+    if (emptyBtree(sx) && emptyBtree(dx)) return 1;
+
+    int sumSX = sumNodes(sx);
+    int sumDX = sumNodes(dx);
+
+    if (sumSX != sumDX) return 0;
+
+    return ugualeSommaDxSx(sx) && ugualeSommaDxSx(dx);
 }

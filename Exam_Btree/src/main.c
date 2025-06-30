@@ -66,12 +66,74 @@ int main(void) {
     printf("La profondità dell'albero è: %d\n", computeDepth(albero));
     printf("Il numero di nodi dell'albero è: %d\n", numNodes(albero));
     printf("Il numero di foglie dell'albero è: %d\n", numLeaves(albero));
-    printf("Il numero di nodi con un solo figlio (function V2) è: %d\n", numNodesWithSingleChildV2(albero));
+    printf("Il numero di nodi con un solo figlio è: %d\n", numNodesWithSingleChild(albero));
     printf("Il numero di figli destri è: %d\n", numDXChilds(albero));
     printf("La somma dei nodi dell'albero è: %d\n", sumNodes(albero));
     printf("Il numero di fratelli è: %d\n", fratelli(albero));
     printf("Il numero di foglie a distanza k è: %d\n", foglieK(albero, 3));
     printf("Gli alberi sono strutturalmente uguali? %d\n", strutturalmenteUguali(albero, albero2));
+    
+    // === TEST FUNZIONE UGUALE SOMMA DX SX ===
+    
+    // === SOTTOALBERO 1 (VERO) ===
+    //       2
+    //      / \
+    //     3   9
+    //    / \  / \
+    //   9  9 6  6
+
+    Btree leaf9a = consBtree(9, newBtree(), newBtree());
+    Btree leaf9b = consBtree(9, newBtree(), newBtree());
+    Btree leaf6a = consBtree(6, newBtree(), newBtree());
+    Btree leaf6b = consBtree(6, newBtree(), newBtree());
+    Btree node3 = consBtree(3, leaf9a, leaf9b);
+    Btree node9 = consBtree(9, leaf6a, leaf6b);
+    Btree subtree1 = consBtree(2, node3, node9);
+
+    // === SOTTOALBERO 2 (FALSO) ===
+    //       2
+    //      / \
+    //     3   9
+    //    / \  / \
+    //   9 10 7  6
+
+    Btree leaf9c = consBtree(9, newBtree(), newBtree());
+    Btree leaf10 = consBtree(10, newBtree(), newBtree());
+    Btree leaf7 = consBtree(7, newBtree(), newBtree());
+    Btree leaf6c = consBtree(6, newBtree(), newBtree());
+    Btree node3b = consBtree(3, leaf9c, leaf10);
+    Btree node9b = consBtree(9, leaf7, leaf6c);
+    Btree subtree2 = consBtree(2, node3b, node9b);
+
+    // === SOTTOALBERO 3 (FALSO) ===
+    //       2
+    //      / \
+    //     8   2
+    //    / \  / \
+    //   9 10 7  6
+
+    Btree leaf9d = consBtree(9, newBtree(), newBtree());
+    Btree leaf10b = consBtree(10, newBtree(), newBtree());
+    Btree leaf7b = consBtree(7, newBtree(), newBtree());
+    Btree leaf6d = consBtree(6, newBtree(), newBtree());
+    Btree node8 = consBtree(8, leaf9d, leaf10b);
+    Btree node2b = consBtree(2, leaf7b, leaf6d);
+    Btree subtree3 = consBtree(2, node8, node2b);
+
+    printf("\n=== SOTTOALBERI DI TEST UGUALE SOMMA DX SX ===\n\n");
+    printf("Sottoalbero 1:\n\n");
+    outputBtreeVisual(subtree1);
+    printf("\n");
+    printf("Sottoalbero 2:\n\n");
+    outputBtreeVisual(subtree2);
+    printf("\n");
+    printf("Sottoalbero 3:\n\n");
+    outputBtreeVisual(subtree3);
+    printf("\n");
+    
+    printf("Il sottoalbero 1? %d\n", ugualeSommaDxSx(subtree1));
+    printf("Il sottoalbero 2? %d\n", ugualeSommaDxSx(subtree2));
+    printf("Il sottoalbero 3? %d\n", ugualeSommaDxSx(subtree3));
     
     return 0;
 }

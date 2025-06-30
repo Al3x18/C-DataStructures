@@ -9,9 +9,7 @@ int numNodes(Btree t);
 
 int numLeaves(Btree t);
 
-// int numNodesWithSingleChild(Btree t);
-
-int numNodesWithSingleChildV2(Btree t);
+int numNodesWithSingleChild(Btree t);
 
 int numDXChilds(Btree t);
 
@@ -22,3 +20,5 @@ int fratelli(Btree t);
 int foglieK(Btree t, int k);
 
 int strutturalmenteUguali(Btree t1, Btree t2);
+
+int ugualeSommaDxSx(Btree t);
