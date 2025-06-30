@@ -98,3 +98,67 @@ int speculare(queue q1, queue q2) {
 
     return 1;
 }
+
+int vicini(queue q, item a, item b) {
+    if (emptyQueue(q)) {
+        return 0;
+    }
+
+    queue temp = newQueue();
+    int viciniCount = 0;
+    item current = NULLITEM;
+    item previous = NULLITEM;
+
+    // Leggi tutti gli elementi dalla coda originale
+    while (!emptyQueue(q)) {
+        current = dequeue(q);
+        
+        // Controlla se la coppia (previous, current) è uguale a (a, b)
+        if (previous != NULLITEM && eq(previous, a) && eq(current, b)) {
+            viciniCount++;
+        }
+        
+        // Salva l'elemento corrente nella coda temporanea
+        enqueue(temp, current);
+        previous = current;
+    }
+
+    // Rimetti tutti gli elementi nella coda originale
+    while (!emptyQueue(temp)) {
+        item restored = dequeue(temp);
+        enqueue(q, restored);
+    }
+
+    free(temp);
+    return viciniCount;
+}
+
+item centralItem(queue q) {
+    if (emptyQueue(q)) {
+        return NULLITEM;
+    }
+
+    queue temp = newQueue();
+    int numElements = 0;
+    item target = NULLITEM;
+
+    while (!emptyQueue(q)) {
+        item current = dequeue(q);
+        enqueue(temp, current);
+        numElements++;
+    }
+
+    int middleIndex = numElements / 2;
+
+    for (int i = 0; i < numElements; i++) {
+        item current = dequeue(temp);
+        enqueue(q, current);
+
+        if (i == middleIndex) {
+            target = current;
+        }
+    }
+    
+    free(temp);
+    return target;
+}

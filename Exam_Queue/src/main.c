@@ -6,6 +6,7 @@
 int main (void) {
     queue q = newQueue();
     queue q2 = newQueue();
+    queue q3 = newQueue();
 
     item i1 = 1;
     item i2 = 4;
@@ -17,6 +18,15 @@ int main (void) {
     item j3 = 4;
     item j4 = 1;
     
+    item v1 = 1;
+    item v2 = 4;
+    item v3 = 9;
+    item v4 = 1;
+    item v5 = 9;
+    item v6 = 1;
+    item v7 = 1;
+    item v8 = 1;
+    item v9 = 9;
     //printf("Coda vuota?: %d\n", emptyQueue(q));
 
     enqueue(q, i1);
@@ -28,6 +38,16 @@ int main (void) {
     enqueue(q2, j2);
     enqueue(q2, j3);
     enqueue(q2, j4);
+
+    enqueue(q3, v1);
+    enqueue(q3, v2);
+    enqueue(q3, v3);
+    enqueue(q3, v4);
+    enqueue(q3, v5);
+    enqueue(q3, v6);
+    enqueue(q3, v7);
+    enqueue(q3, v8);
+    enqueue(q3, v9);
 
     //printf("Coda vuota?: %d\n", emptyQueue(q));
 
@@ -42,6 +62,14 @@ int main (void) {
     printQueue(q);
     printf("Coda 2: ");
     printQueue(q2);
+
+    printf("Vicini: %d\n", vicini(q3, v4, v5));
+    printf("Central Item: ");
+    output_item(centralItem(q3));
+    printf("\n");
+
+    printf("Coda 3: ");
+    printQueue(q3);
 
     return 0;
 }
