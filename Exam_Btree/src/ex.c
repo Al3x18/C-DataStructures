@@ -133,3 +133,28 @@ int ugualeSommaDxSx(Btree t) {
 
     return ugualeSommaDxSx(sx) && ugualeSommaDxSx(dx);
 }
+
+int numeroNipoti(Btree t, item i) {
+    if (emptyBtree(t)) return 0;
+
+    if (eq(getItem(t), i)) {
+        int count = 0;
+        Btree left = figlioSX(t);
+        Btree right = figlioDX(t);
+
+        // Count children of left child
+        if (!emptyBtree(left)) {
+            if (!emptyBtree(figlioSX(left))) count++;
+            if (!emptyBtree(figlioDX(left))) count++;
+        }
+        // Count children of right child
+        if (!emptyBtree(right)) {
+            if (!emptyBtree(figlioSX(right))) count++;
+            if (!emptyBtree(figlioDX(right))) count++;
+        }
+        return count;
+    }
+
+    // Otherwise, search in left and right subtrees
+    return numeroNipoti(figlioSX(t), i) + numeroNipoti(figlioDX(t), i);
+}

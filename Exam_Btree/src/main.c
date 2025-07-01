@@ -9,14 +9,15 @@ int main(void) {
     //     3   7
     //    / \   \
     //   1   4   9
-    //  /     \
-    // 10      6
+    //  /     \   \
+    // 10      6  12
     
     // Creo i nodi foglia
     
     Btree foglia6 = consBtree(6, newBtree(), newBtree());
-    Btree foglia9 = consBtree(9, newBtree(), newBtree());
+    
     Btree foglia10 = consBtree(10, newBtree(), newBtree());
+    Btree foglia12 = consBtree(12, newBtree(), newBtree());
     
     // Nodo 4 ha come figlio destro il nodo 6
     Btree nodo4 = consBtree(4, newBtree(), foglia6);
@@ -24,7 +25,8 @@ int main(void) {
     // Creo i nodi intermedi
     Btree nodo1 = consBtree(1, foglia10, newBtree());
     Btree nodo3 = consBtree(3, nodo1, nodo4);
-    Btree nodo7 = consBtree(7, newBtree(), foglia9);
+    Btree nodo9 = consBtree(9, newBtree(), foglia12);
+    Btree nodo7 = consBtree(7, newBtree(), nodo9);
     
     // Creo la radice
     Btree albero = consBtree(5, nodo3, nodo7);
@@ -72,6 +74,7 @@ int main(void) {
     printf("Il numero di fratelli è: %d\n", fratelli(albero));
     printf("Il numero di foglie a distanza k è: %d\n", foglieK(albero, 3));
     printf("Gli alberi sono strutturalmente uguali? %d\n", strutturalmenteUguali(albero, albero2));
+    printf("Il numero di nipoti di 7 è: %d\n", numeroNipoti(albero, 7));
     
     // === TEST FUNZIONE UGUALE SOMMA DX SX ===
     

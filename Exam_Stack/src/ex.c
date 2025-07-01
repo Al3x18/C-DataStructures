@@ -54,3 +54,66 @@ int duplicati(stack s1, stack s2) {
 
     return count;
 }
+
+stack invertiAPartireDa(stack s, item i) {
+    stack result = newStack();
+    int trovato = 0;
+
+    stack invariata = newStack();
+    stack daInvertire = newStack();
+    stack tmpInv = newStack();
+    stack revInvariata = newStack();
+    stack revDaInvertire = newStack();
+
+    // Scorri lo stack: metti in invariata fino a e compreso i, poi in daInvertire
+    while (!emptyStack(s)) {
+        item current = top(s);
+        pop(s);
+        if (!trovato) {
+            push(current, invariata);
+            if (eq(current, i)) {
+                trovato = 1;
+            }
+        } else {
+            push(current, daInvertire);
+        }
+    }
+
+    while (!emptyStack(invariata)) {
+        item current = top(invariata);
+        push(current, tmpInv);
+        pop(invariata);
+    }
+
+    while (!emptyStack(tmpInv)) {
+        item current = top(tmpInv);
+        push(current, revInvariata);
+        pop(tmpInv);
+    }
+
+    while (!emptyStack(daInvertire)) {
+        item current = top(daInvertire);
+        push(current, revDaInvertire);
+        pop(daInvertire);
+    }
+
+    while (!emptyStack(revDaInvertire)) {
+        item current = top(revDaInvertire);
+        push(current, result);
+        pop(revDaInvertire);
+    }
+
+    while (!emptyStack(revInvariata)) {
+        item current = top(revInvariata);
+        push(current, result);
+        pop(revInvariata);
+    }
+
+    free(invariata);
+    free(daInvertire);
+    free(tmpInv);
+    free(revInvariata);
+    free(revDaInvertire);
+
+    return result;
+}

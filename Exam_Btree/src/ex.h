@@ -22,3 +22,5 @@ int foglieK(Btree t, int k);
 int strutturalmenteUguali(Btree t1, Btree t2);
 
 int ugualeSommaDxSx(Btree t);
+
+int numeroNipoti(Btree t, item i);
