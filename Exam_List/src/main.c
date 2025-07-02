@@ -15,10 +15,16 @@ int main(void) {
     l = consList(8, l);
     l = consList(1, l);
     l = consList(5, l);
+    l = consList(10, l);
 
     outputList(l);
 
+    item centrale = itemCentrale(l);
+
     printf("l'item con il numero di duplicazioni massimo è: %d\n", max_duplicazioni(l));
+    printf("L'item centrale della lista è: %d\n", centrale);
+
+    outputList(l);
 
     return 0;
 }
