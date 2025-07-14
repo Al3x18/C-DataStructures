@@ -14,4 +14,8 @@ item getFirst(list l);
 
 list removeList(list l, int pos);
 
+int sizeList(list l);
+
+int posItem(list l, item val);
+
 void outputList(list l);

@@ -158,3 +158,11 @@ int numeroNipoti(Btree t, item i) {
     // Otherwise, search in left and right subtrees
     return numeroNipoti(figlioSX(t), i) + numeroNipoti(figlioDX(t), i);
 }
+
+int almenoUnFiglioDX(Btree t) {
+    if (emptyBtree(t)) return 0;
+
+    if (figlioDX(t) != NULL && figlioSX(t) == NULL) return 1;
+
+    return almenoUnFiglioDX(figlioSX(t)) || almenoUnFiglioDX(figlioDX(t));
+}

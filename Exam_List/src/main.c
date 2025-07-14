@@ -23,6 +23,7 @@ int main(void) {
 
     printf("l'item con il numero di duplicazioni massimo è: %d\n", max_duplicazioni(l));
     printf("L'item centrale della lista è: %d\n", centrale);
+    printf("La dimensione della lista è: %d\n", sizeList(l));
 
     outputList(l);
 

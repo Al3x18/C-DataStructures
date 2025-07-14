@@ -106,3 +106,34 @@ list removeList(list l, int pos) {
 
     return l;
 }
+
+int sizeList(list l) {
+    int size = 0;
+
+    while(!emptyList(l)) {
+        size++;
+        l = tailList(l);
+    }
+
+    return size;
+}
+
+int posItem(list l, item val) {
+    int pos = 0;
+    int found = 0;
+
+    while (!emptyList(l) && !found) {
+        if(eq(getFirst(l), val)) {
+            found = 1;
+        } else {
+            pos++;
+            l = tailList(l);
+        }
+    }
+
+    if (!found) {
+        pos = -1;
+    }
+
+    return pos;
+}

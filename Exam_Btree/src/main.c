@@ -75,6 +75,7 @@ int main(void) {
     printf("Il numero di foglie a distanza k è: %d\n", foglieK(albero, 3));
     printf("Gli alberi sono strutturalmente uguali? %d\n", strutturalmenteUguali(albero, albero2));
     printf("Il numero di nipoti di 7 è: %d\n", numeroNipoti(albero, 7));
+    printf("Almeno un figlio destro? %d\n", almenoUnFiglioDX(albero));
     
     // === TEST FUNZIONE UGUALE SOMMA DX SX ===
     
