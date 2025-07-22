@@ -138,6 +138,15 @@ int main(void) {
     printf("Il sottoalbero 1? %d\n", ugualeSommaDxSx(subtree1));
     printf("Il sottoalbero 2? %d\n", ugualeSommaDxSx(subtree2));
     printf("Il sottoalbero 3? %d\n", ugualeSommaDxSx(subtree3));
+
+    //Btree fogliaTd = consBtree(4, NULL, NULL);
+    Btree foglia3d = consBtree(3, NULL, NULL);
+    Btree nodo2d = consBtree(2, NULL, foglia3d);
+    Btree alberoDiagonale = consBtree(1, NULL, nodo2d);
+
+    outputBtreeVisual(alberoDiagonale);
+    printf("\n");
+    printf("L'albero è diagonale? %d\n", diagonale(alberoDiagonale));
     
     return 0;
 }

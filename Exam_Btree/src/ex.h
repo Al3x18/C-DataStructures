@@ -26,3 +26,5 @@ int ugualeSommaDxSx(Btree t);
 int numeroNipoti(Btree t, item i);
 
 int almenoUnFiglioDX(Btree t);
+
+int diagonale(Btree t);

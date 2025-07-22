@@ -166,3 +166,29 @@ int almenoUnFiglioDX(Btree t) {
 
     return almenoUnFiglioDX(figlioSX(t)) || almenoUnFiglioDX(figlioDX(t));
 }
+
+int diagonale(Btree t) {
+    if (emptyBtree(t)) return 0; // An empty tree is not diagonal
+    if (emptyBtree(figlioSX(t)) && emptyBtree(figlioDX(t))) return 0; // A leaf is not diagonal
+
+    // Only left children
+    if (figlioSX(t) != NULL && figlioDX(t) == NULL) {
+        Btree curr = figlioSX(t);
+        while (!emptyBtree(curr)) {
+            if (figlioDX(curr) != NULL) return 0;
+            curr = figlioSX(curr);
+        }
+        return 1;
+    }
+    // Only right children
+    if (figlioDX(t) != NULL && figlioSX(t) == NULL) {
+        Btree curr = figlioDX(t);
+        while (!emptyBtree(curr)) {
+            if (figlioSX(curr) != NULL) return 0;
+            curr = figlioDX(curr);
+        }
+        return 1;
+    }
+    // If both children exist, not diagonal
+    return 0;
+}
