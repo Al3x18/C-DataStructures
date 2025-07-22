@@ -196,6 +196,6 @@ int diagonale(Btree t) {
     // Un albero vuoto è diagonale
     if (emptyBtree(t)) return 1;
     
-    // Prova entrambe le direzioni: solo sinistri O solo destri
+    // Prova entrambe le direzioni: solo sinistri O solo destri 1
     return isDiagonaleDirection(t, 0) || isDiagonaleDirection(t, 1);
 }
