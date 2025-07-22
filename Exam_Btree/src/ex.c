@@ -172,16 +172,16 @@ int isDiagonaleDirection(Btree t, int direction) {
     // direction: 0 = sinistra, 1 = destra
     if (emptyBtree(t)) return 1;
     
-    // Se è una foglia, è sempre diagonale
+    // Se è una foglia, è diagonale
     if (emptyBtree(figlioSX(t)) && emptyBtree(figlioDX(t))) return 1;
     
     // Se ha entrambi i figli, NON è diagonale
     if (!emptyBtree(figlioSX(t)) && !emptyBtree(figlioDX(t))) return 0;
     
-    // Se cerchiamo direzione sinistra (0) ma ha solo figlio destro
+    // Se cerchiamo direzione sinistra (0) ma ha solo figlio destro non è diagonale
     if (direction == 0 && !emptyBtree(figlioDX(t))) return 0;
     
-    // Se cerchiamo direzione destra (1) ma ha solo figlio sinistro  
+    // Se cerchiamo direzione destra (1) ma ha solo figlio sinistro non è diagonale  
     if (direction == 1 && !emptyBtree(figlioSX(t))) return 0;
     
     // Se ha solo un figlio nella direzione corretta, continua ricorsivamente
