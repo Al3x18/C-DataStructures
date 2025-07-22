@@ -167,28 +167,35 @@ int almenoUnFiglioDX(Btree t) {
     return almenoUnFiglioDX(figlioSX(t)) || almenoUnFiglioDX(figlioDX(t));
 }
 
-int diagonale(Btree t) {
-    if (emptyBtree(t)) return 0; // An empty tree is not diagonal
-    if (emptyBtree(figlioSX(t)) && emptyBtree(figlioDX(t))) return 0; // A leaf is not diagonal
+// Funzione helper per verificare se l'albero è diagonale in una direzione specifica
+int isDiagonaleDirection(Btree t, int direction) {
+    // direction: 0 = sinistra, 1 = destra
+    if (emptyBtree(t)) return 1;
+    
+    // Se è una foglia, è sempre diagonale
+    if (emptyBtree(figlioSX(t)) && emptyBtree(figlioDX(t))) return 1;
+    
+    // Se ha entrambi i figli, NON è diagonale
+    if (!emptyBtree(figlioSX(t)) && !emptyBtree(figlioDX(t))) return 0;
+    
+    // Se cerchiamo direzione sinistra (0) ma ha solo figlio destro
+    if (direction == 0 && !emptyBtree(figlioDX(t))) return 0;
+    
+    // Se cerchiamo direzione destra (1) ma ha solo figlio sinistro  
+    if (direction == 1 && !emptyBtree(figlioSX(t))) return 0;
+    
+    // Se ha solo un figlio nella direzione corretta, continua ricorsivamente
+    if (!emptyBtree(figlioSX(t))) {
+        return isDiagonaleDirection(figlioSX(t), direction);
+    } else {
+        return isDiagonaleDirection(figlioDX(t), direction);
+    }
+}
 
-    // Only left children
-    if (figlioSX(t) != NULL && figlioDX(t) == NULL) {
-        Btree curr = figlioSX(t);
-        while (!emptyBtree(curr)) {
-            if (figlioDX(curr) != NULL) return 0;
-            curr = figlioSX(curr);
-        }
-        return 1;
-    }
-    // Only right children
-    if (figlioDX(t) != NULL && figlioSX(t) == NULL) {
-        Btree curr = figlioDX(t);
-        while (!emptyBtree(curr)) {
-            if (figlioSX(curr) != NULL) return 0;
-            curr = figlioDX(curr);
-        }
-        return 1;
-    }
-    // If both children exist, not diagonal
-    return 0;
+int diagonale(Btree t) {
+    // Un albero vuoto è diagonale
+    if (emptyBtree(t)) return 1;
+    
+    // Prova entrambe le direzioni: solo sinistri O solo destri
+    return isDiagonaleDirection(t, 0) || isDiagonaleDirection(t, 1);
 }
