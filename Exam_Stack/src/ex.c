@@ -117,3 +117,30 @@ stack invertiAPartireDa(stack s, item i) {
 
     return result;
 }
+
+void rimuoviPrecMinore(stack s) {
+    item prec = NULLITEM;
+    //stack tmp = newStack();
+    stack toAdd = newStack();
+
+    while (!emptyStack(s)) {
+        item current = top(s);
+        pop(s);
+
+        if (prec != NULLITEM && prec <= current) {
+            push(current, toAdd);
+        }
+
+        //push(current, tmp);
+        prec = current;
+    }
+
+    while (!emptyStack(toAdd)) {
+        item current = top(toAdd);
+        push(current, s);
+        pop(toAdd);
+    }
+
+    //free(tmp);
+    free(toAdd);
+}

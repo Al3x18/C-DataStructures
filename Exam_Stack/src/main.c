@@ -7,6 +7,7 @@ int main(void) {
     stack s1 = newStack();
     stack s2 = newStack();
     stack s3 = newStack();
+    stack s5 = newStack();
 
     push('a', s1);
     push('e', s1);
@@ -38,12 +39,22 @@ int main(void) {
     push(2, s3);
     push(1, s3);
 
+    push(2, s5);
+    push(1, s5);
+    push(6, s5);
+    push(5, s5);
+    push(7, s5);
+    push(3, s5);
+    
     printf("Il numero di duplicati è: %d\n", duplicati(s1, s2));
 
     printStack(s1);
     printStack(s2);
     stack s4 = invertiAPartireDa(s3, 3);
     printStack(s4);
+    printStack(s5);
+    rimuoviPrecMinore(s5);
+    printStack(s5);
 
     return 0;
 }
